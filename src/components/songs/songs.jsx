@@ -1,5 +1,6 @@
 import React from 'react';
 import "./songs.css"; 
+import {extra} from './addsong.jsx';
 let songDetails= [
     {'artwork':'https://i.pinimg.com/originals/93/bc/65/93bc65a8f41fe324b24de8822a9b8202.jpg', 'song':'Some one You loved', 'DOR':'July 21, 2019', 'artist':'Lewis Capaldi', 'rating':'Good'},
     {'artwork':'https://assets.vogue.com/photos/5b609aec67f1177f20a9a875/master/pass/00-promo-post-malone.jpg', 'song':'Circles', 'DOR':'September 27, 2019', 'artist':'Post Malone', 'rating':'Superhit'},
@@ -7,12 +8,22 @@ let songDetails= [
 ]
 
 let Songs=()=> {
+    
+
+    const [songDetail, updateSongs]= React.useState(songDetails);
+
    
     let singerDetails=()=>{
-        window.location.href = '/artists';
+        window.location.href = '/artists'; 
     }
     let addsong=()=>{
+
+        updateSongs([...songDetail,{'artwork':'https://i.pinimg.com/originals/93/bc/65/93bc65a8f41fe324b24de8822a9b8202.jpg', 'song':'Some one You loved', 'DOR':'July 21, 2019', 'artist':'Lewis Capaldi', 'rating':'Good'}])
+        
         window.location.href = '/addsong';
+        let opt= [{'artwork':'https://i.pinimg.com/originals/93/bc/65/93bc65a8f41fe324b24de8822a9b8202.jpg', 'song':'Some one You loved', 'DOR':'July 21, 2019', 'artist':'Lewis Capaldi', 'rating':'Good'}]
+        songDetails.push(opt);
+        // console.log("Hello")
     }
 
    return(
@@ -41,11 +52,11 @@ let Songs=()=> {
                            <td>{item.DOR}</td>
                            <td>{item.artist}</td>
                            <td>
-                           <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
+                           <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star"></span>
                            </td>
                        </tr>
                    })}
